@@ -63,6 +63,6 @@ Resources
 
 ### Tools
 * [Markdown Syntax](http://daringfireball.net/projects/markdown/syntax)
-* [Checking code: JSLint](http://www.jslint.com/) / [JSHint](http://www.jshint.com)
+* Checking code: [JSLint](http://www.jslint.com/) / [JSHint](http://www.jshint.com)
 * [Basic unix commands](http://www.webmonkey.com/2010/02/learn_enough_unix_for_your_resume/#Basic_Commands).
 * [Browser debugging in Chrome](https://developer.chrome.com/extensions/tut_debugging)
