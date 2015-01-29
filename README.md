@@ -5,7 +5,7 @@ Generative Art & Creative Code Spring 2015
 
 This collaborative course focuses on Generative Art, Creative Coding, and Implementing Emerging Technologies. Students will employ industry-standard methods, tools, and workflow to efficiently design and animate within the browser in a real-world environment. Advanced web standards, workflow, usability, testing, iterations, and implementation will be covered. 
 
-**TLDR** We are going to learn about and make art in the browser.
+**tl;dr** We are going to learn about and make art in the browser.
 
 ## Class Wiki & Facebook Group'
 * [Class Wiki](https://github.com/rybotron/wnm498genart_f14/wiki)
