@@ -60,9 +60,9 @@ Resources
 * [JavaScript and JQuery: Interactive Front-End Web Development](http://javascriptbook.com/)
 * [How to learn JavaScript properly](http://javascriptissexy.com/how-to-learn-javascript-properly/)
 * [Eloquent Javascript](http://eloquentjavascript.net/)
+* [Markdown Syntax](http://daringfireball.net/projects/markdown/syntax)
 
 ### Tools
-* [Markdown Syntax](http://daringfireball.net/projects/markdown/syntax)
 * Checking code: [JSLint](http://www.jslint.com/) / [JSHint](http://www.jshint.com)
 * [Basic unix commands](http://www.webmonkey.com/2010/02/learn_enough_unix_for_your_resume/#Basic_Commands).
 * [Browser debugging in Chrome](https://developer.chrome.com/extensions/tut_debugging)
