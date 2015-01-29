@@ -8,7 +8,7 @@ This collaborative course focuses on Generative Art, Creative Coding, and Implem
 **tl;dr** We are going to learn and make art in the browser.
 
 ## Class Wiki & Facebook Group'
-* [Class Wiki](https://github.com/rybotron/wnm498genart_f14/wiki)
+* [Class Wiki](https://github.com/rybotron/wnm498genart15s/wiki)
 * [Class Email List](https://groups.google.com/forum/#!forum/wnm498genart15s)
 
 ##Expectations
