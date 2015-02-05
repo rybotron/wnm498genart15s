@@ -9,6 +9,7 @@ by Kelly Kim
 **Music by**: Yaporigami/Yu Miyashita
 
 Trained as a fine artist, today Kenichi Yoneda (Kynd) is a designer for an electronics company.
+
 An audio-visual experiment displayed on vimeo.
 
 ### UX Flow
