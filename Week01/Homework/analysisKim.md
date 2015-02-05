@@ -5,6 +5,7 @@ by Kelly Kim
 [http://www.creativeapplications.net/openframeworks/brdg020-lilium-kenichi-yoneda-kynd-in-collaboration-with-brdg/](http://www.creativeapplications.net/openframeworks/brdg020-lilium-kenichi-yoneda-kynd-in-collaboration-with-brdg/)
 
 **Created by**: Kenichi Yoneda (Kynd) in collaboration with Tokyo ‘visual label’ BRDG
+
 **Music by**: Yaporigami/Yu Miyashita
 
 Trained as a fine artist, today Kenichi Yoneda (Kynd) is a designer for an electronics company.
