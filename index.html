@@ -13,9 +13,10 @@
 	// Emit Particles based on mouse velocity
 
 	var particles = [];
+	var myCanvas;
 
 	function setup() {
-	  createCanvas(windowWidth, windowHeight);
+	  myCanvas = createCanvas(windowWidth, windowHeight);
 	  particles.push( new Particle( 
 	    createVector(random(width), random(0, height / 2)),
 	    createVector( 2, 1 ),
@@ -110,6 +111,10 @@
 	  var f = p5.Vector.div( force, this.mass );
 	  this.acceleration.add( f );
 	};
+
+	window.onresize = function(){
+		myCanvas.resize(windowWidth, windowHeight);
+	}
 
 	</script>
 </head>
