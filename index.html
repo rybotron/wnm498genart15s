@@ -1,6 +1,115 @@
 <<html>
 <head>
 	<title>WNM 498 Generative Art & Creative Code Srping 2015</title>
+	<script type="text/javascript">
+
+	// Academy of Art
+	// WNM 498 Generative Art & Creative Code
+	//
+	// Ryan Berkey
+	// ryan@rybotron.com
+
+	// Emit Particles based on mouse velocity
+
+	var particles = [];
+
+	function setup() {
+	  createCanvas(windowWidth, windowHeight);
+	  particles.push( new Particle( 
+	    createVector(random(width), random(0, height / 2)),
+	    createVector( 2, 1 ),
+	    random(5, 50) ));
+	}
+
+	function draw() {
+	  background(255, 200);
+
+	  var gravity = createVector(0, 0.5);
+
+	  for( var i = 0; i < particles.length; i++ ){
+
+	    // Friction snippet from Chapter 2 Forces in the Nature of Code
+	    var c = 0.01;
+	    var friction = particles[i].velocity.get();
+	    friction.mult(-1);
+	    friction.normalize();
+	    friction.mult(c);
+
+	    particles[i].display();
+	    particles[i].applyForce(friction);
+	    particles[i].applyForce(gravity);
+	    particles[i].move();
+	  }
+	}
+
+
+	function mouseMoved(){
+
+	  var m = createVector(mouseX, mouseY);
+	  var pm = createVector( pmouseX, pmouseY); //pmouseX & pmouseY are the previous frame mouse position
+
+	  // A hacky way of making sure a circle isn't emitted before we are expecting it 
+	  if( millis() < 350 ){ 
+	    pm.x = mouseX;
+	    pm.y = mouseY;
+	  }
+
+	  // find the distance between mouse and pmouse
+	  d = m.dist(pm);
+
+	  // Push a new Particle into the Particle array if the distance between the mouse and previous mouse position is > 50
+	  if ( m.dist(pm) > 50 ){
+	    // print( "mouseX: " + m.x + " mouseY: " + m.y + " pMouseX: " + pm.x + " pMouseY: " + pm.y + " distance: " + d );
+
+	    // Push a new Particle at the mouse location with a velocity set to the length of the distance between the mouse an pmouse
+	    var dConstrain = constrain( d, 0, 150);
+	    var dia = map( dConstrain, 0, 150, 150, 0 );
+	    particles.push( new Particle( m, p5.Vector.sub(m, pm).div(50), dia ));
+	  }
+	}
+
+	// The function Particle(type) is the constructor "class"
+	// All code inside of the constructor is executed when a new instance is created
+	function Particle( location, velocity, diameter ){
+	  this.location = location || createVector( width / 2, height / 2 );
+	  this.velocity = velocity || createVector( 5, 7 );
+	  this.acceleration = createVector(0, 0);
+	  this.diameter = diameter;
+	  this.mass = diameter / 100;
+	}
+
+	// Add methods specific to Particle objects to the prototype 
+	Particle.prototype.display = function() {
+	  noStroke();
+	  fill(0);
+	  ellipse(this.location.x, this.location.y, this.diameter, this.diameter);
+	}
+
+	Particle.prototype.move = function() {
+
+	  this.velocity.add( this.acceleration );
+	  this.location.add( this.velocity );
+
+	  if ((this.location.x > width) || (this.location.x < 0)) {
+	    this.velocity.x = this.velocity.x * -1;
+	  }
+	  if ((this.location.y > height) || (this.location.y < 0)) {
+	    this.velocity.y = this.velocity.y * -1;
+	  }
+
+	  this.acceleration.mult( 0 );
+	}
+
+	Particle.prototype.setVelocity = function( velocity ){
+	  this.velocity = velocity || createVector( 5, 7 ); 
+	}
+
+	Particle.prototype.applyForce = function(force) {
+	  var f = p5.Vector.div( force, this.mass );
+	  this.acceleration.add( f );
+	};
+
+	</script>
 </head>
 <body>
 </body>
