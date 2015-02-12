@@ -43,7 +43,3 @@ _Analysis:_
 The author explored an unique structure for the 3D visualization. By changing the heightOffset, the small island can be flat, floating in the sky or like an tropical island floating on the sea. It also spins nonstop to keep user's attention so I think it's a successful generative art project.
 
 ![Lilypad](http://www.chromeexperiments.com/detail/lilypad/img/ahZzfmNocm9tZXhwZXJpbWVudHMtaHJkchgLEg9FeHBlcmltZW50SW1hZ2UY4In0CAw/large)
-
-
-
-
