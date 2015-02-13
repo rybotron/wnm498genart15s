@@ -5,7 +5,7 @@
 
 var setup = function() {
 
-	createGraphics(600, 400);
+	createCanvas(600, 400);
 	noStroke();
 	background(0, 150, 255);
 	

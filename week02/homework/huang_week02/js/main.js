@@ -11,6 +11,7 @@ function setup(){ //only setup once
 function draw() { //continuously draw and render every frame
 	background(0);
 
+	// strokeWeight(2);
 	// stroke(50); //my guide vertial
 	// line(50, 0, 50, height);
 	// line(100, 0, 100, height);
@@ -185,12 +186,16 @@ function draw() { //continuously draw and render every frame
 function mousePressed() {
   // Check if mouse is inside the circle
   var d = dist(mouseX, mouseY, 150, 335);
+  print(d);
   if (d < 20) {
     // Pick new random color values
+    // r = random(); // pick a value between 0-1
+    // r = random(200,255);
     r = random(255);
     g = random(255);
     b = random(255);
   }
+  // console.log("pressed " + true);
 }
 
 function windowResized(){
