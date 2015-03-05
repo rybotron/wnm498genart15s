@@ -20,8 +20,7 @@ function preload(){
 function setup(){
 	createCanvas( windowWidth, windowHeight );
 
-	noLoop()
-	noCanvas();
+	// noLoop();
 
 }
 
