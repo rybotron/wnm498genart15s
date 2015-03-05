@@ -108,7 +108,7 @@ fill(50);
 noStroke();
 rect(-345, -450, 190, 18);
 rect(-315, -520, 130, 80);
-tanslate(550,110);
+translate(550,110);
 
 
 
