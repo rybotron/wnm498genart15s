@@ -5,7 +5,8 @@ var sound,
 	ampScale = 50,
 	xPos = 0,
 	yPos = 0,
-	xDir = 1;
+	xDir = 1,
+	freq;
 
 function preload(){
   background(255);
@@ -31,7 +32,7 @@ function draw() {
  		Frequency Visualization
  	********************************************************************************/
 
-	var freq = fft.analyze();
+	freq = fft.analyze();
 	
 	var c1 = color(255, 0, 0);
 	var c2 = color(0, 0, 255);
@@ -49,5 +50,21 @@ function draw() {
 		rect( x, y, width / freq.length, -freq[i] );
 	}
 
+	// Get average of 10 frequencies
+	var fs = 0;
+	for(var i = 5; i <= 10; i++){
+		fs += freq[i];
+	}
+	print( fs / 10 );
 }
+
+
+
+
+
+
+
+
+
+
 

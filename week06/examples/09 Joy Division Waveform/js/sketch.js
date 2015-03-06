@@ -9,7 +9,7 @@ var gui,
     sound,
     FFT,
     waves = [],
-    waveNum = 50,
+    waveNum = 150,
     circleRGBA;
 
 var ctrl = {

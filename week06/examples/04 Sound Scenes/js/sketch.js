@@ -35,7 +35,7 @@ function draw() {
     var t = floor( sound.currentTime() );
 
     // Take m modulo 2 to see if m is even or odd
-    if( t % 2 ){
+    if( t < 1 ){
         var tileCount = 5;
         var gridWidth = width / tileCount;
         translate( gridWidth / 2, gridWidth / 2 );
@@ -52,7 +52,9 @@ function draw() {
                 ellipse( posX, posY, d, d);
             }
         }
-    }else{
+    }else if(t > 1 && t > 2){
         ellipse(width / 2, height / 2, level*1000, level*1000);
+    }else{
+        ellipse(0, height / 2, level*1000, level*1000);
     }
 }
