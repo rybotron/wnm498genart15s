@@ -1,13 +1,20 @@
 
 var fft = [];
-var dot = [];
-var dotAmount= 0;
 
-var circleOne = [];
-var circleTwo = [];
-var circleSize = 0;
+var dot = [];
+    dotAmount= 0;
+
+var circleOne, circleTwo = [];
+    circleSize = 0;
 
 var purple , pink ;
+
+var wave = [];
+    waveNum = 50;
+
+var ctrl = {    //what this mean?
+    vSpace: 100
+};
 
 function preload(){
    sound = loadSound("enoe_-_Ice_shuffle.mp3");
@@ -19,6 +26,7 @@ function setup(){
 
   pink = color(245,70,255);
   purple = color(40,25,45);
+  blue = color(0,250,250);
 
   fft = new p5.FFT(0.95,16);
   
@@ -47,31 +55,58 @@ function draw(){
   dot.randomPos();
   dot.show( dotAmount[8]- 80 );
 
-
+  //------------------------------------------------ circle
   circleSize = fft.analyze();
-  circleOne.show( circleSize[1]+100 );
+  var diameter = map(circleSize[10], 0, 255, 300, 500);
+  circleOne.show( diameter );
 
+  //------------------------------------------------ frequency wave
+  var freq = fft.analyze();
+  wave.unshift( freq );
+  if ( wave.length >= waveNum){
+    wave.pop();
+  }
 
+  // Offset the matrix
+    var xGridSize = width / wave.length;
+    translate( xGridSize / 2,  height / 1.5);
+    stroke( blue, 0.5);
+    strokeWeight( 5 );
+
+  for(var i = 0; i < wave.length; i++){
+  var yGridPos = map( i, 0, (wave.length - 1), -ctrl.vSpace, ctrl.vSpace);
+        beginShape();
+        for ( var j = 0; j < wave[i].length; j++ ) {
+            var radius = xGridSize / 2;
+            var xPos = xGridSize * i;
+            var yPos = -wave[i][j] + yGridPos;
+            vertex(xPos, yPos);
+        }
+        endShape();
+  }
+
+  //------------------------------------------------sound pause and play
   if ( sound.isPlaying() ) {
     push();
     translate( 50, 50);
-    fill(0,250,250);
+    fill(blue);
     noStroke();
     triangle( -10, 10, -10, -10, 6, 0);
     pop();
   } else {
     push();
     translate( 40, 50);
-    fill(0,250,250);
+    fill(blue);
     noStroke();
     rectMode(CENTER);
     rect(0, 0, 5, 15);
     rect(10, 0, 5, 15);
     pop();
   }
-
 }
-//---------------------------------------------------------------------------------------- Circls
+
+
+//---------------------------------------------------------------------------------------- Circles
 function Circles(size){ 
 this.x = width/2;     
 this.y = height/2;
