@@ -37,14 +37,16 @@ function draw() {
 
   var waveform = fft.waveform();
 
+  var r = random(255);
+
 if ( t >= 0 && t < 11 ){
   noFill();
-  stroke( 17, 243, 246, 15 );
+  stroke( random(0), random(200), random(255), 15 );
   strokeWeight(level * 200);
   ellipse( width /2, height /2, 450, 450);
   //smallest
 push();
-  stroke( 17, 243, 246, 25 );
+  stroke( random(0), random(200), random(255), 25 );
   strokeWeight(level * 600);
   ellipse( width /2, height /2, 50, 50);
 pop();
@@ -65,7 +67,7 @@ endShape();
 } 
 else if(t >= 24 && t < 28){
   noFill();
-  stroke( 0, 91, 127 );
+  stroke( random(0), random(0), random(150) );
   strokeWeight(level * 600);
   ellipse( width /2, height /2, 400, 400);
 }
@@ -78,11 +80,11 @@ else if(t >= 28 && t < 36){
 else if(t >= 36 && t < 43){ //rotor
   noFill();
   push();
-  stroke( 146, 39, 143, 15 );
+  stroke( random(255), random(50), random(255), 15 );
   strokeWeight(level * 800);
   ellipse( width /2, height /2, 400, 400);
   pop();
-   stroke( 146, 39, 143, 30 );
+   stroke( random(255), random(50), random(255), 30 );
   strokeWeight(level * 600);
   ellipse( width /2, height /2, 100, 100);
 
