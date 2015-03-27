@@ -14,6 +14,7 @@ function draw(){
     balls[i].update();
     balls[i].draw();
   }
+  TWEEN.update();
 }
 
 

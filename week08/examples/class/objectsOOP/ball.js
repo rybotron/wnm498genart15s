@@ -1,24 +1,72 @@
 function Ball( radius ){
-  this.x = random( 0, width );
-  this.y = random( 0, height );
-  this.xSpeed = random(-15, 15);
-  this.ySpeed = random(-15, 15);
-  this.radius = random(50, 100);
+  this.position = createVector( random( 0, width ), random( 0, height ) );
+  this.velocity = createVector( random(-15, 15), random(-15, 15));
+  this.radius = 50;
   this.color = color( random (255), random(255), random(255) );
+  this.rotation = random(0, 360) * PI / 180;
+
+  this.tweenDown = new TWEEN.Tween( this );
+  this.tweenDown.to( { radius: 50 }, 250);
+
+
+
+  this.tweenUp = new TWEEN.Tween( this );
+  this.tweenUp.to( { radius: 500 }, 250)
+              .easing(TWEEN.Easing.Elastic.Out)
+              .onComplete( function(){
+                this.tweenDown.start();
+              });
+              
 }
 
 Ball.prototype.update = function(){
   this.checkEdges();
-  this.x += this.xSpeed;
-  this.y += this.ySpeed;
+  this.position.add(this.velocity);
 }
 
 Ball.prototype.draw = function(){
   fill(this.color);
-  ellipse(this.x, this.y, this.radius, this.radius);  
+  // push();
+  ellipse(this.position.x, this.position.y, this.radius, this.radius); 
+
+  // pop();
 }
 
 Ball.prototype.checkEdges = function(){
-  if( this.x >= width || this.x <= 0) this.xSpeed *= -1;
-  if( this.y >= height || this.y <= 0) this.ySpeed *= -1;
+  if( this.position.x >= width || this.position.x <= 0) {
+    this.velocity.x *= -1;
+    this.tweenUp.start();
+  }
+  if( this.position.y >= height || this.position.y <= 0) { 
+    this.velocity.y *= -1;
+    this.tweenUp.start();
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
