@@ -47,7 +47,7 @@ function setup(){
     var material = new THREE.MeshLambertMaterial( { color: 0x00ff00 } );
     var cube = new THREE.Mesh( geometry, material );
 
-    scene.add(cube);
+    // scene.add(cube);
 
     camera.lookAt(cube.position);
 
