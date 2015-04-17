@@ -8,6 +8,8 @@
 var windowHalfX = window.innerWidth / 2;
 var windowHalfY = window.innerHeight / 2;
 
+var t = 0;
+
 // Create an new THREE Scene instance to add our primitives and geometry to
 var scene = new THREE.Scene();
 
@@ -23,9 +25,12 @@ var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
 
 // Create a Mesh from the Box Geometry vertices and the Basic Material
 var cube = new THREE.Mesh( geometry, material );
+var cubeTwo = new THREE.Mesh( geometry, material );
 
 // Add the Mesh to the scene
 scene.add( cube );
+scene.add( cubeTwo );
+cubeTwo.position.z = -3;
 
 // Move the Camera z position
 camera.position.z = 5;
@@ -51,9 +56,16 @@ window.addEventListener( 'resize', function(){
 function render() {
 	requestAnimationFrame( render );
 
-	cube.rotation.x += 0.01;
-	cube.rotation.y += 0.01;
+	// cube.rotation.x += 0.01;
+	// cube.rotation.y += 0.01;
 
+	
+  camera.lookAt(cube.position);
+
+  var r = 2;
+  camera.position.x = r * Math.sin(t);
+  camera.position.z = r * Math.cos(t);
+  t += .1;
 	renderer.render( scene, camera );
 }
 render();
