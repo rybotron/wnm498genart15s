@@ -9,12 +9,13 @@ var camera,
     Ico,
     stars,
     tween,
+    tweenTwo,
     cameraX,
     cameraY,
     cameraZ,
     fft,
-    analyzeFft=0
-    ;
+    analyzeFft=0,
+    theta = 0;
 
 function preload(){
    sound = loadSound("audio/Shlohmo_Emerge_From_Smoke.m4a");
@@ -39,7 +40,7 @@ function setup(){
 
     camera.position.x = 0;
     camera.position.y = 0;
-    camera.position.z = 7;
+    camera.position.z = 15;
 
     // var light = new THREE.PointLight();
     // light.position.set( 10, 10, 10 );
@@ -56,13 +57,22 @@ function setup(){
 
 //--tween
     tween = new TWEEN.Tween( camera.position );
-    tween.to( { x: cameraX, y: 0, z: cameraZ}, 1000); 
+    tween.to( { x: 0, y: 0, z: 100}, 1000); 
     tween.easing( TWEEN.Easing.Exponential.InOut );
 
     tween.onUpdate(function(){
-            sound.setVolume(s.volume);
-            rect(width / 2, height / 2, 10, s.volume * -100)
+            // sound.setVolume(s.volume);
+            // rect(width / 2, height / 2, 10, s.volume * -100)
         });
+
+    tween.onComplete(function(){
+        tween.to( { x: 0, y: 0, z: 7 }, 1000);
+        tween.start();
+    });
+
+
+    
+
     
 
 //-- renderer
@@ -140,7 +150,18 @@ function setup(){
     stars = new THREE.PointCloud(starGeometry, starStuff);
     scene.add(stars);
 
-    tween = new TWEEN.Tween( camera.position );
+    // tween = new TWEEN.Tween( camera.position );
+    // tween.start();
+
+    Ico3.scale.set( 0.000001, 0.000001, 0.000001);
+    tweenTwo = new TWEEN.Tween( Ico3.scale );
+    tweenTwo.to( { x: 1, y: 1, z: 1}, 250);
+    tweenTwo.easing( TWEEN.Easing.Sinusoidal.InOut );
+    tweenTwo.onComplete(function(){
+        tweenTwo.to( { x: 0.000001, y: 0.000001, z: 0.000001 }, 250);
+        tweenTwo.start();
+    });
+
     
 }
 
@@ -156,10 +177,27 @@ function draw(){
 
     Ico3.rotation.x-=2/50;
     Ico3.rotation.y-=2/200;
-    
+
+    var r = 10;
+    theta += .1;
+    Ico3.position.x = r * Math.cos(theta);
+    Ico3.position.y = r * Math.sin(theta);
+
     analyzeFft = fft.analyze();
     cameraZ = map(analyzeFft[6],0,255,0,100);
     cameraX = map(analyzeFft[2],0,255,-50,50);
+
+    if(analyzeFft[3] > 220) {
+        // print(analyzeFft[14]);
+        tween.to( { x: random(-10,10), y: random(-10,10), z: random(-10,10) }, 1000);
+        tween.start();
+        tweenTwo.start();
+    }
+
+    // if(analyzeFft[4] > 215) {
+    //     tweenTwo.start();
+    // }
+    // console.log(analyzeFft[3]);
 
     // tween.to( { x: cameraX, y: 0, z: cameraZ}, 1000); 
     // tween.easing( TWEEN.Easing.Exponential.InOut );
@@ -167,7 +205,7 @@ function draw(){
     
     TWEEN.update();
 
-    console.log(analyzeFft[6]); 
+    // console.log(analyzeFft[6]); 
 }
 
 
